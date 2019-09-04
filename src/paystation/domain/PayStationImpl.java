@@ -34,6 +34,9 @@ public class PayStationImpl implements PayStation {
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
+
+        Map<String,Integer> coins = new HashMap<String,Integer>();
+        coins.put("quarter", )
         insertedSoFar += coinValue;
         timeBought = insertedSoFar / 5 * 2;
     }
@@ -53,9 +56,16 @@ public class PayStationImpl implements PayStation {
     @Override
     public void cancel() {
         reset();
+
     }
     
     private void reset() {
         timeBought = insertedSoFar = 0;
+        //should be an existing map called "coins"
+        Map<String,Integer> eject = new HashMap<String,Integer>();
+
+        eject.put("quarter", coins.get("quarter"));
+        eject.put("dime", coins.get("dime"));
+        eject.put("nickel", coins.get("nickel"));
     }
 }
