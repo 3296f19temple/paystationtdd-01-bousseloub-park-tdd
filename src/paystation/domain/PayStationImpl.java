@@ -72,8 +72,8 @@ public class PayStationImpl implements PayStation {
 
     @Override
     public int empty() {
-        int totalCollected = insertedSoFar;
+        int totalAmountCollected = insertedSoFar;
         reset();
-        return totalCollected;
+        return totalAmountCollected;
     }
 }

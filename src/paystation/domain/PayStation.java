@@ -69,5 +69,6 @@ public interface PayStation {
      * @return
      */
     int empty();
+    
 
 }

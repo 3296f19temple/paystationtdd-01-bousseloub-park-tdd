@@ -139,4 +139,52 @@ public class PayStationImplTest {
                 10, ps.readDisplay());
     }
 
+    /**
+     * Call to empty returns the total amount entered.
+     *
+     * @throws IllegalCoinException
+     */
+    @Test
+    public void callToEmptyReturnsTotal()
+            throws IllegalCoinException {
+        ps.addPayment(10);
+        assertEquals("Empty should return the total amount", 10, ps.empty());
+    }
+
+    /**
+     * Canceled entry does not add to the amount returned by empty.
+     */
+    @Test
+    public void cancelledDoesNotAddAmountReturnedByEmpty()
+            throws IllegalCoinException {
+
+        ps.addPayment(10);
+        ps.addPayment(5);
+        ps.cancel();
+        assertEquals("Canceled entry does not add up to amount", 0, ps.empty());
+        ps.addPayment(10);
+        assertEquals("After calling empty it should work", 10, ps.empty());
+    }
+
+    /**
+     * Call to empty resets the total to zero.
+     */
+    @Test
+    public void callToEmptyResetsTotalToZero()
+            throws IllegalCoinException {
+        ps.addPayment(25);
+        ps.addPayment(25);
+        ps.empty();
+        assertEquals("Call to empty should reset total to zero", 0, ps.readDisplay());
+    }
+
+    /**
+     * Call to cancel returns a map containing one coin entered.
+     */
+    @Test
+    public void callToCancelReturnsMapContainingOneCoinEntered()
+            throws IllegalCoinException {
+
+    }
+
 }
