@@ -5,11 +5,9 @@ package paystation.domain;
  *
  * Responsibilities:
  *
- * 1) Accept payment; 
- * 2) Calculate parking time based on payment; 
- * 3) Know earning, parking time bought; 
- * 4) Issue receipts; 
- * 5) Handle buy and cancel events.
+ * 1) Accept payment; 2) Calculate parking time based on payment; 3) Know
+ * earning, parking time bought; 4) Issue receipts; 5) Handle buy and cancel
+ * events.
  *
  * This source code is from the book "Flexible, Reliable Software: Using
  * Patterns and Agile Development" published 2010 by CRC Press. Author: Henrik B
@@ -20,7 +18,7 @@ package paystation.domain;
  * purposes. For any commercial use, see http://www.baerbak.com/
  */
 public class PayStationImpl implements PayStation {
-    
+
     private int insertedSoFar;
     private int timeBought;
 
@@ -28,9 +26,12 @@ public class PayStationImpl implements PayStation {
     public void addPayment(int coinValue)
             throws IllegalCoinException {
         switch (coinValue) {
-            case 5: break;
-            case 10: break;
-            case 25: break;
+            case 5:
+                break;
+            case 10:
+                break;
+            case 25:
+                break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
@@ -58,7 +59,7 @@ public class PayStationImpl implements PayStation {
         reset();
 
     }
-    
+
     private void reset() {
         timeBought = insertedSoFar = 0;
         //should be an existing map called "coins"
@@ -67,5 +68,12 @@ public class PayStationImpl implements PayStation {
         eject.put("quarter", coins.get("quarter"));
         eject.put("dime", coins.get("dime"));
         eject.put("nickel", coins.get("nickel"));
+    }
+
+    @Override
+    public int empty() {
+        int totalCollected = insertedSoFar;
+        reset();
+        return totalCollected;
     }
 }
