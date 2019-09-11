@@ -1,5 +1,8 @@
 package paystation.domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Implementation of the pay station.
  *
@@ -29,34 +32,37 @@ public class PayStationImpl implements PayStation {
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
-        Map<String,Integer> coins = new HashMap<String,Integer>();
-        
+
+        Map<String, Integer> coins = new HashMap<String, Integer>();
+
         switch (coinValue) {
-            case 5: 
-                if(coinCountN == 0){
+            case 5:
+                if (coinCountN == 0) {
                     coins.put("nickel", 1);
-                }
-                else{
+                } else {
+
                     coinCount = coins.get("nickel");
                     coinCount++;
                     coins.put("nickel", coinCount);
                 }
                 break;
-            case 10: 
-                if(coinCountD == 0){
+
+            case 10:
+                if (coinCountD == 0) {
                     coins.put("dime", 1);
-                }
-                else{
+                } else {
+
                     coinCount = coins.get("dime");
                     coinCount++;
                     coins.put("dime", coinCount);
                 }
                 break;
-            case 25: 
-                if(coinCountQ == 0){
+
+            case 25:
+                if (coinCountQ == 0) {
                     coins.put("quarter", 1);
-                }
-                else{
+                } else {
+
                     coinCount = coins.get("quarter");
                     coinCount++;
                     coins.put("quarter", coinCount);
@@ -65,8 +71,7 @@ public class PayStationImpl implements PayStation {
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
-
-        
+      
         insertedSoFar += coinValue;
         timeBought = insertedSoFar / 5 * 2;
     }
@@ -83,10 +88,10 @@ public class PayStationImpl implements PayStation {
         return r;
     }
 
+    }*/
     @Override
     public Map<Integer, Integer> cancel() {
         reset();
-
     }
 
     private void reset() {
