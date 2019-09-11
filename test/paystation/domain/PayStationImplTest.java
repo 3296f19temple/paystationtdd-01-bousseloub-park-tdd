@@ -140,8 +140,7 @@ public class PayStationImplTest {
     }
 
     /**
-     * Test 1
-     * Call to empty returns the total amount entered.
+     * Test 1 Call to empty returns the total amount entered.
      *
      * @throws IllegalCoinException
      */
@@ -153,8 +152,7 @@ public class PayStationImplTest {
     }
 
     /**
-     * Test 2
-     * Canceled entry does not add to the amount returned by empty.
+     * Test 2 Canceled entry does not add to the amount returned by empty.
      */
     @Test
     public void cancelledDoesNotAddAmountReturnedByEmpty()
@@ -169,8 +167,7 @@ public class PayStationImplTest {
     }
 
     /**
-     * Test 3
-     * Call to empty resets the total to zero.
+     * Test 3 Call to empty resets the total to zero.
      */
     @Test
     public void callToEmptyResetsTotalToZero()
@@ -182,17 +179,21 @@ public class PayStationImplTest {
     }
 
     /**
-     * Test 4
-     * Call to cancel returns a map containing one coin entered.
+     * Test 4 Call to cancel returns a map containing one coin entered.
      */
     @Test
     public void callToCancelReturnsMapContainingOneCoinEntered()
             throws IllegalCoinException {
+        ps.addPayment(10);
+        ps.addPayment(25);
+        ps.cancel();
+        assertEquals("Should return a map containing one coin entered",
+                10, ps.cancel());
 
     }
 
     /**
-     * Test 5 Call to cancel returns a map containing a mizture of coins
+     * Test 5 Call to cancel returns a map containing a mixture of coins
      * entered. (Entering 10c, 10c, and 5c then pressing cancel is returning
      * 2x10c and 1x5c, not 1x25c)
      */ // UPDATE ASSERTEQUALS TO WORK
