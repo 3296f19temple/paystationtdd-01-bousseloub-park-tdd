@@ -140,6 +140,7 @@ public class PayStationImplTest {
     }
 
     /**
+     * Test 1
      * Call to empty returns the total amount entered.
      *
      * @throws IllegalCoinException
@@ -152,6 +153,7 @@ public class PayStationImplTest {
     }
 
     /**
+     * Test 2
      * Canceled entry does not add to the amount returned by empty.
      */
     @Test
@@ -167,6 +169,7 @@ public class PayStationImplTest {
     }
 
     /**
+     * Test 3
      * Call to empty resets the total to zero.
      */
     @Test
@@ -179,12 +182,71 @@ public class PayStationImplTest {
     }
 
     /**
+     * Test 4
      * Call to cancel returns a map containing one coin entered.
      */
     @Test
     public void callToCancelReturnsMapContainingOneCoinEntered()
             throws IllegalCoinException {
 
+    }
+
+    /**
+     * Test 5 Call to cancel returns a map containing a mizture of coins
+     * entered. (Entering 10c, 10c, and 5c then pressing cancel is returning
+     * 2x10c and 1x5c, not 1x25c)
+     */ // UPDATE ASSERTEQUALS TO WORK
+    @Test
+    public void shouldReturnSameChange()
+            throws IllegalCoinException {
+        ps.addPayment(10);
+        ps.addPayment(10);
+        ps.addPayment(5);
+        ps.cancel();
+        assertEquals("Cancel should return same coins entered",
+                10, ps.readDisplay());
+        assertEquals("Cancel should return same coins entered",
+                10, ps.readDisplay());
+        assertEquals("Cancel should return same coins entered",
+                5, ps.readDisplay());
+    }
+
+    /**
+     * Test 6 Call to cancel returns a map that does not contain a key for a
+     * coin not entered
+     */ //UPDATE ASSERTEQUALS TO WORK
+    @Test
+    public void shouldHaveAccurateCoinMap()
+            throws IllegalCoinException {
+        ps.addPayment(5);
+        ps.addPayment(10);
+        //no ps.addPayments(25) so there should be no map for quarters
+        ps.cancel();
+
+    }
+
+    /**
+     * Test 7 Call to cancel clears the map
+     */ //UPDATE ASSERTEQUALS TO WORK
+    @Test
+    public void shouldClearMapAfterCancel()
+            throws IllegalCoinException {
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(25);
+        ps.cancel();
+    }
+
+    /**
+     * Test 8 Call to buy clears the map
+     */ //UPDATE ASSERTEQUALS TO WORK
+    @Test
+    public void shouldClearMapAfterBuy()
+            throws IllegalCoinException {
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(25);
+        ps.buy();
     }
 
 }

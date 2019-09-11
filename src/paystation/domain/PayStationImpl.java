@@ -1,5 +1,8 @@
 package paystation.domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Implementation of the pay station.
  *
@@ -21,20 +24,48 @@ public class PayStationImpl implements PayStation {
 
     private int insertedSoFar;
     private int timeBought;
+    private int coinCount;
+    private int coinCountN = 0;
+    private int coinCountD = 0;
+    private int coinCountQ = 0;
 
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
+        Map<String, Integer> coins = new HashMap<String, Integer>();
+
         switch (coinValue) {
             case 5:
+                if (coinCountN == 0) {
+                    coins.put("nickel", 1);
+                } else {
+                    coinCount = coins.get("nickel");
+                    coinCount++;
+                    coins.put("nickel", coinCount);
+                }
                 break;
             case 10:
+                if (coinCountD == 0) {
+                    coins.put("dime", 1);
+                } else {
+                    coinCount = coins.get("dime");
+                    coinCount++;
+                    coins.put("dime", coinCount);
+                }
                 break;
             case 25:
+                if (coinCountQ == 0) {
+                    coins.put("quarter", 1);
+                } else {
+                    coinCount = coins.get("quarter");
+                    coinCount++;
+                    coins.put("quarter", coinCount);
+                }
                 break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
+
         insertedSoFar += coinValue;
         timeBought = insertedSoFar / 5 * 2;
     }
@@ -51,13 +82,20 @@ public class PayStationImpl implements PayStation {
         return r;
     }
 
+    /*
     @Override
     public void cancel() {
+        reset();
+    }*/
+    @Override
+    public Map<Integer, Integer> cancel() {
         reset();
     }
 
     private void reset() {
         timeBought = insertedSoFar = 0;
+        //should be an existing map called "coins"
+
     }
 
     @Override
