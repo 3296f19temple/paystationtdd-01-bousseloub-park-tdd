@@ -139,7 +139,55 @@ public class PayStationImplTest {
                 10, ps.readDisplay());
     }
 
-<<<<<<< HEAD
+
+    /**
+     * Call to empty returns the total amount entered.
+     *
+     * @throws IllegalCoinException
+     */
+    @Test
+    public void callToEmptyReturnsTotal()
+            throws IllegalCoinException {
+        ps.addPayment(10);
+        assertEquals("Empty should return the total amount", 10, ps.empty());
+    }
+
+    /**
+     * Canceled entry does not add to the amount returned by empty.
+     */
+    @Test
+    public void cancelledDoesNotAddAmountReturnedByEmpty()
+            throws IllegalCoinException {
+
+        ps.addPayment(10);
+        ps.addPayment(5);
+        ps.cancel();
+        assertEquals("Canceled entry does not add up to amount", 0, ps.empty());
+        ps.addPayment(10);
+        assertEquals("After calling empty it should work", 10, ps.empty());
+    }
+
+    /**
+     * Call to empty resets the total to zero.
+     */
+    @Test
+    public void callToEmptyResetsTotalToZero()
+            throws IllegalCoinException {
+        ps.addPayment(25);
+        ps.addPayment(25);
+        ps.empty();
+        assertEquals("Call to empty should reset total to zero", 0, ps.readDisplay());
+    }
+
+    /**
+     * Call to cancel returns a map containing one coin entered.
+     */
+    @Test
+    public void callToCancelReturnsMapContainingOneCoinEntered()
+            throws IllegalCoinException {
+
+    }
+
     /** Test 5
      * Call to cancel returns a map containing a mizture of coins entered.
      * (Entering 10c, 10c, and 5c then pressing cancel is returning 2x10c and 1x5c, not 1x25c)
@@ -198,54 +246,4 @@ public class PayStationImplTest {
         ps.buy();
         }
     
-=======
-    /**
-     * Call to empty returns the total amount entered.
-     *
-     * @throws IllegalCoinException
-     */
-    @Test
-    public void callToEmptyReturnsTotal()
-            throws IllegalCoinException {
-        ps.addPayment(10);
-        assertEquals("Empty should return the total amount", 10, ps.empty());
-    }
-
-    /**
-     * Canceled entry does not add to the amount returned by empty.
-     */
-    @Test
-    public void cancelledDoesNotAddAmountReturnedByEmpty()
-            throws IllegalCoinException {
-
-        ps.addPayment(10);
-        ps.addPayment(5);
-        ps.cancel();
-        assertEquals("Canceled entry does not add up to amount", 0, ps.empty());
-        ps.addPayment(10);
-        assertEquals("After calling empty it should work", 10, ps.empty());
-    }
-
-    /**
-     * Call to empty resets the total to zero.
-     */
-    @Test
-    public void callToEmptyResetsTotalToZero()
-            throws IllegalCoinException {
-        ps.addPayment(25);
-        ps.addPayment(25);
-        ps.empty();
-        assertEquals("Call to empty should reset total to zero", 0, ps.readDisplay());
-    }
-
-    /**
-     * Call to cancel returns a map containing one coin entered.
-     */
-    @Test
-    public void callToCancelReturnsMapContainingOneCoinEntered()
-            throws IllegalCoinException {
-
-    }
-
->>>>>>> 565ad71eb45b7ad44c9ddb75dd7fe18d5bc2baed
 }
