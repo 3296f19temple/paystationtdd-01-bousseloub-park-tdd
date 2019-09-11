@@ -222,7 +222,6 @@ public class PayStationImplTest {
      * Test 6 Call to cancel returns a map that does not contain a key for a
      * coin not entered
      */ //UPDATE ASSERTEQUALS TO WORK
-    //failed test confirmed
     @Test
     public void shouldHaveAccurateCoinMap()
             throws IllegalCoinException {
@@ -239,9 +238,8 @@ public class PayStationImplTest {
 
     /**
      * Test 7 Call to cancel clears the map
-     */
-    //Failed test confirmed
-    //
+     */ //SHOULD WORK? NEED TEST
+    //failed test confirmed
     @Test
     public void shouldClearMapAfterCancel()
             throws IllegalCoinException {
@@ -270,5 +268,4 @@ public class PayStationImplTest {
         assertEquals("buy should clear the map before being returned again by cancel",
                 testMap, ps.cancel());
     }
-
 }

@@ -32,6 +32,7 @@ public class PayStationImpl implements PayStation {
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
+
         Map<String, Integer> coins = new HashMap<String, Integer>();
 
         switch (coinValue) {
@@ -39,24 +40,29 @@ public class PayStationImpl implements PayStation {
                 if (coinCountN == 0) {
                     coins.put("nickel", 1);
                 } else {
+
                     coinCount = coins.get("nickel");
                     coinCount++;
                     coins.put("nickel", coinCount);
                 }
                 break;
+
             case 10:
                 if (coinCountD == 0) {
                     coins.put("dime", 1);
                 } else {
+
                     coinCount = coins.get("dime");
                     coinCount++;
                     coins.put("dime", coinCount);
                 }
                 break;
+
             case 25:
                 if (coinCountQ == 0) {
                     coins.put("quarter", 1);
                 } else {
+
                     coinCount = coins.get("quarter");
                     coinCount++;
                     coins.put("quarter", coinCount);
@@ -65,7 +71,7 @@ public class PayStationImpl implements PayStation {
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
-
+      
         insertedSoFar += coinValue;
         timeBought = insertedSoFar / 5 * 2;
     }
@@ -82,22 +88,16 @@ public class PayStationImpl implements PayStation {
         return r;
     }
 
-    /*
-    @Override
-    public void cancel() {
-        reset();
-    }*/
     @Override
     public Map<Integer, Integer> cancel() {
-        //Map<Integer, Integer> mapTest = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> mapTest = new HashMap<Integer, Integer>();
         reset();
-        //return mapTest;
+        return mapTest;
     }
 
     private void reset() {
         timeBought = insertedSoFar = 0;
         //should be an existing map called "coins"
-
     }
 
     @Override
