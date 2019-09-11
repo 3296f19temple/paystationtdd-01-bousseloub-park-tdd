@@ -59,6 +59,7 @@ public interface PayStation {
      * two dimes and a nickle, you should get back two dimes and a nickle, not a
      * quarter.) The Map will be cleared after a cancel or buy.
      */
+    //public void cancel();
     Map<Integer, Integer> cancel();
 
     /**
@@ -69,6 +70,5 @@ public interface PayStation {
      * @return
      */
     int empty();
-    
 
 }
