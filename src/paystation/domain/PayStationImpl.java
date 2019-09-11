@@ -21,23 +21,52 @@ public class PayStationImpl implements PayStation {
 
     private int insertedSoFar;
     private int timeBought;
+    private int coinCount;
+    private int coinCountN = 0;
+    private int coinCountD = 0;
+    private int coinCountQ = 0;
 
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
+        Map<String,Integer> coins = new HashMap<String,Integer>();
+        
         switch (coinValue) {
-            case 5:
+            case 5: 
+                if(coinCountN == 0){
+                    coins.put("nickel", 1);
+                }
+                else{
+                    coinCount = coins.get("nickel");
+                    coinCount++;
+                    coins.put("nickel", coinCount);
+                }
                 break;
-            case 10:
+            case 10: 
+                if(coinCountD == 0){
+                    coins.put("dime", 1);
+                }
+                else{
+                    coinCount = coins.get("dime");
+                    coinCount++;
+                    coins.put("dime", coinCount);
+                }
                 break;
-            case 25:
+            case 25: 
+                if(coinCountQ == 0){
+                    coins.put("quarter", 1);
+                }
+                else{
+                    coinCount = coins.get("quarter");
+                    coinCount++;
+                    coins.put("quarter", coinCount);
+                }
                 break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
 
-        Map<String,Integer> coins = new HashMap<String,Integer>();
-        coins.put("quarter", )
+        
         insertedSoFar += coinValue;
         timeBought = insertedSoFar / 5 * 2;
     }
@@ -55,7 +84,7 @@ public class PayStationImpl implements PayStation {
     }
 
     @Override
-    public void cancel() {
+    public Map<Integer, Integer> cancel() {
         reset();
 
     }
@@ -63,11 +92,6 @@ public class PayStationImpl implements PayStation {
     private void reset() {
         timeBought = insertedSoFar = 0;
         //should be an existing map called "coins"
-        Map<String,Integer> eject = new HashMap<String,Integer>();
-
-        eject.put("quarter", coins.get("quarter"));
-        eject.put("dime", coins.get("dime"));
-        eject.put("nickel", coins.get("nickel"));
     }
 
     @Override
