@@ -11,6 +11,8 @@
  */
 package paystation.domain;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -139,12 +141,12 @@ public class PayStationImplTest {
                 10, ps.readDisplay());
     }
 
-
     /**
      * Test 1 Call to empty returns the total amount entered.
      *
      * @throws IllegalCoinException
      */
+    //TODO: fail state
     @Test
     public void callToEmptyReturnsTotal()
             throws IllegalCoinException {
@@ -155,6 +157,7 @@ public class PayStationImplTest {
     /**
      * Test 2 Canceled entry does not add to the amount returned by empty.
      */
+    //TODO: fail state
     @Test
     public void cancelledDoesNotAddAmountReturnedByEmpty()
             throws IllegalCoinException {
@@ -170,6 +173,7 @@ public class PayStationImplTest {
     /**
      * Test 3 Call to empty resets the total to zero.
      */
+    //TODO: fail state
     @Test
     public void callToEmptyResetsTotalToZero()
             throws IllegalCoinException {
@@ -182,25 +186,29 @@ public class PayStationImplTest {
     /**
      * Test 4 Call to cancel returns a map containing one coin entered.
      */
+    //TODO: fail state
     @Test
     public void callToCancelReturnsMapContainingOneCoinEntered()
             throws IllegalCoinException {
+        Map<String, Integer> testMap = new HashMap<String, Integer>();
         ps.addPayment(10);
-        ps.addPayment(25);
+        testMap.put("dime", 1);
         ps.cancel();
         assertEquals("Should return a map containing one coin entered",
                 10, ps.cancel());
 
     }
 
-    /** Test 5
-     * Call to cancel returns a map containing a mizture of coins entered.
-     * (Entering 10c, 10c, and 5c then pressing cancel is returning 2x10c and 1x5c, not 1x25c)
+    /**
+     * Test 5 Call to cancel returns a map containing a mixture of coins
+     * entered. (Entering 10c, 10c, and 5c then pressing cancel is returning
+     * 2x10c and 1x5c, not 1x25c)
      */ // SHOULD WORK? NEEDS TEST
+    //failed test confirmed
     @Test
     public void shouldReturnSameChange()
             throws IllegalCoinException {
-        Map<String,Integer> testMap = new HashMap<String,Integer>();
+        Map<String, Integer> testMap = new HashMap<String, Integer>();
         testMap.put("dime", 2);
         testMap.put("nickel", 1);
         ps.addPayment(10);
@@ -210,54 +218,54 @@ public class PayStationImplTest {
                 testMap, ps.cancel());
     }
 
-    /** Test 6 
-     * Call to cancel returns a map that does not 
-     * contain a key for a coin not entered
-    */ //UPDATE ASSERTEQUALS TO WORK
+
+    /**
+     * Test 6 Call to cancel returns a map that does not contain a key for a
+     * coin not entered
+     */ //UPDATE ASSERTEQUALS TO WORK
     @Test
     public void shouldHaveAccurateCoinMap()
-            throws IllegalCoinException{
-        Map<String,Integer> testMap = new HashMap<String,Integer>();
+            throws IllegalCoinException {
+        Map<String, Integer> testMap = new HashMap<String, Integer>();
         testMap.put("dime", 1);
         testMap.put("nickel", 1);
-        ps.addPayments(5);
-        ps.addPayments(10);
+        ps.addPayment(5);
+        ps.addPayment(10);
         //no ps.addPayments(25) so there should be no map for quarters
         assertEquals("returned map should not have any keys for non-entered coins",
                 testMap, ps.cancel());
-        
-
     }
 
-    /** Test 7
-     * Call to cancel clears the map
+    /**
+     * Test 7 Call to cancel clears the map
      */ //SHOULD WORK? NEED TEST
+    //failed test confirmed
     @Test
     public void shouldClearMapAfterCancel()
-            throws IllegalCoinException{
-        Map<String,Integer> testMap = new HashMap<String,Integer>();
-        ps.addPayments(5);
-        ps.addPayments(10);
-        ps.addPayments(25);
-        ps.cancel(); 
+            throws IllegalCoinException {
+        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(25);
+        ps.cancel();
         //cancelling once clears map, but returns map before clear. cancelling twice should return cleared map
-        assertEquals("cancel function clears map after the map is returned", 
+        assertEquals("cancel function clears map after the map is returned",
                 testMap, ps.cancel());
     }
 
-    /** Test 8
-     * Call to buy clears the map
+    /**
+     * Test 8 Call to buy clears the map
      */ //SHOULD WORK? NEED TEST
-     @Test
-     public void shouldClearMapAfterBuy()
-            throws IllegalCoinException{
-        Map<String,Integer> testMap = new HashMap<String,Integer>();
-        ps.addPayments(5);
-        ps.addPayments(10);
-        ps.addPayments(25);
+    //failed test confirmed
+    @Test
+    public void shouldClearMapAfterBuy()
+            throws IllegalCoinException {
+        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(25);
         ps.buy();
         assertEquals("buy should clear the map before being returned again by cancel",
                 testMap, ps.cancel());
-        }
-    
+    }
 }
