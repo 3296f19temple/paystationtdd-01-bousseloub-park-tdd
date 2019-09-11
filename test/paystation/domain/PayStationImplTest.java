@@ -146,6 +146,7 @@ public class PayStationImplTest {
      *
      * @throws IllegalCoinException
      */
+    //TODO: fail state
     @Test
     public void callToEmptyReturnsTotal()
             throws IllegalCoinException {
@@ -156,6 +157,7 @@ public class PayStationImplTest {
     /**
      * Test 2 Canceled entry does not add to the amount returned by empty.
      */
+    //TODO: fail state
     @Test
     public void cancelledDoesNotAddAmountReturnedByEmpty()
             throws IllegalCoinException {
@@ -171,6 +173,7 @@ public class PayStationImplTest {
     /**
      * Test 3 Call to empty resets the total to zero.
      */
+    //TODO: fail state
     @Test
     public void callToEmptyResetsTotalToZero()
             throws IllegalCoinException {
@@ -183,6 +186,7 @@ public class PayStationImplTest {
     /**
      * Test 4 Call to cancel returns a map containing one coin entered.
      */
+    //TODO: fail state
     @Test
     public void callToCancelReturnsMapContainingOneCoinEntered()
             throws IllegalCoinException {
