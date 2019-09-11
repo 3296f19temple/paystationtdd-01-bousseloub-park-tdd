@@ -33,34 +33,34 @@ public class PayStationImpl implements PayStation {
         
         switch (coinValue) {
             case 5: 
-                if(coinCountN == 0){
+                /*if(coinCountN == 0){
                     coins.put("nickel", 1);
                 }
                 else{
                     coinCount = coins.get("nickel");
                     coinCount++;
                     coins.put("nickel", coinCount);
-                }
+                }*/
                 break;
             case 10: 
-                if(coinCountD == 0){
+                /*if(coinCountD == 0){
                     coins.put("dime", 1);
                 }
                 else{
                     coinCount = coins.get("dime");
                     coinCount++;
                     coins.put("dime", coinCount);
-                }
+                }*/
                 break;
             case 25: 
-                if(coinCountQ == 0){
+                /*if(coinCountQ == 0){
                     coins.put("quarter", 1);
                 }
                 else{
                     coinCount = coins.get("quarter");
                     coinCount++;
                     coins.put("quarter", coinCount);
-                }
+                }*/
                 break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
