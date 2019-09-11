@@ -218,6 +218,7 @@ public class PayStationImplTest {
                 testMap, ps.cancel());
     }
 
+
     /**
      * Test 6 Call to cancel returns a map that does not contain a key for a
      * coin not entered
@@ -233,7 +234,6 @@ public class PayStationImplTest {
         //no ps.addPayments(25) so there should be no map for quarters
         assertEquals("returned map should not have any keys for non-entered coins",
                 testMap, ps.cancel());
-
     }
 
     /**
