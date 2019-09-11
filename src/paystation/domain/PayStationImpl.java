@@ -22,33 +22,45 @@ public class PayStationImpl implements PayStation {
     private int insertedSoFar;
     private int timeBought;
     private int coinCount;
+    private int coinCountN = 0;
+    private int coinCountD = 0;
+    private int coinCountQ = 0;
 
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
         Map<String,Integer> coins = new HashMap<String,Integer>();
-        coins.put("quarter", 0);
-        coins.put("dime", 0);
-        coins.put("nickel", 0);
-
+        
         switch (coinValue) {
             case 5: 
-                coinCount = coins.get("nickel");
-                coinCount++;
-                coins.put("nickel", coinCount);
-                
+                if(coinCountN == 0){
+                    coins.put("nickel", 1);
+                }
+                else{
+                    coinCount = coins.get("nickel");
+                    coinCount++;
+                    coins.put("nickel", coinCount);
+                }
                 break;
             case 10: 
-                coinCount = coins.get("dime");
-                coinCount++;
-                coins.put("dime", coinCount);
-
+                if(coinCountD == 0){
+                    coins.put("dime", 1);
+                }
+                else{
+                    coinCount = coins.get("dime");
+                    coinCount++;
+                    coins.put("dime", coinCount);
+                }
                 break;
             case 25: 
-                cointCount = coins.get("quarter");
-                coinCount++;
-                coins.put("quarter", coinCount);
-
+                if(coinCountQ == 0){
+                    coins.put("quarter", 1);
+                }
+                else{
+                    cointCount = coins.get("quarter");
+                    coinCount++;
+                    coins.put("quarter", coinCount);
+                }
                 break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
