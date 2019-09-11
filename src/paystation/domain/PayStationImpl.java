@@ -57,7 +57,7 @@ public class PayStationImpl implements PayStation {
                     coins.put("quarter", 1);
                 }
                 else{
-                    cointCount = coins.get("quarter");
+                    coinCount = coins.get("quarter");
                     coinCount++;
                     coins.put("quarter", coinCount);
                 }
