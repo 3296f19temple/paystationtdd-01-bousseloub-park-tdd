@@ -177,14 +177,14 @@ public class PayStationImplTest {
      *
      * @throws paystation.domain.IllegalCoinException
      */
-    //TODO: fail state
+    //fail state confirmed
     @Test
     public void callToEmptyResetsTotalToZero()
             throws IllegalCoinException {
         ps.addPayment(25);
         ps.addPayment(25);
         ps.empty();
-        assertEquals("Call to empty should reset total to zero", 0, ps.readDisplay());
+        assertEquals("Call to empty should reset total to zero", 0, ps.empty());
     }
 
     /**
@@ -227,6 +227,7 @@ public class PayStationImplTest {
      * Test 6 Call to cancel returns a map that does not contain a key for a
      * coin not entered
      */ //UPDATE ASSERTEQUALS TO WORK
+    //failed test confirmed
     @Test
     public void shouldHaveAccurateCoinMap()
             throws IllegalCoinException {
