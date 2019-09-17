@@ -196,6 +196,7 @@ public class PayStationImplTest {
      * @throws paystation.domain.IllegalCoinException
      */
     //fail state confirmed
+    //now Works
     @Test
     public void callToCancelReturnsMapContainingOneCoinEntered()
             throws IllegalCoinException {
@@ -231,6 +232,7 @@ public class PayStationImplTest {
      * coin not entered
      */ //UPDATE ASSERTEQUALS TO WORK
     //failed test confirmed
+    //now Works
     @Test
     public void shouldHaveAccurateCoinMap()
             throws IllegalCoinException {
