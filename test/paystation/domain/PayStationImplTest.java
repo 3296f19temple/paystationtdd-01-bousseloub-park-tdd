@@ -159,7 +159,7 @@ public class PayStationImplTest {
      *
      * @throws paystation.domain.IllegalCoinException
      */
-    //TODO: fail state
+    //fail state confirmed
     @Test
     public void cancelledDoesNotAddAmountReturnedByEmpty()
             throws IllegalCoinException {

@@ -90,7 +90,7 @@ public class PayStationImpl implements PayStation {
     @Override
     public Map<Integer, Integer> cancel() {
         Map<Integer, Integer> mapTest = new HashMap<>(coinsMap);
-        reset();
+        //reset();
         return mapTest;
     }
 
