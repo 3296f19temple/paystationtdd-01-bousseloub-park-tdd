@@ -29,40 +29,49 @@ public class PayStationImpl implements PayStation {
     private int coinCountD = 0;
     private int coinCountQ = 0;
 
+    private Map<Integer, Integer> coinsMap = new HashMap<>();
+
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
 
-        Map<String, Integer> coins = new HashMap<String, Integer>();
-
         switch (coinValue) {
 
             case 5:
-                /*if(coinCountN == 0){
-                    coins.put("nickel", 1);
+                if (coinCountN == 0) {
+                    coinsMap.put(5, 1);
                 } else {
-                    coinCount = coins.get("nickel");
+
+                    coinCount = coinsMap.get(5);
                     coinCount++;
-                    coins.put("nickel", coinCount);
-                }*/
+                    //coinsMap.remove(5);
+                    coinsMap.put(5, coinCount);
+                }
+                coinCountN++;
                 break;
             case 10:
-                /*if(coinCountD == 0){
-                    coins.put("dime", 1);
+                if (coinCountD == 0) {
+                    coinsMap.put(10, 1);
                 } else {
-                    coinCount = coins.get("dime");
+
+                    coinCount = coinsMap.get(10);
                     coinCount++;
-                    coins.put("dime", coinCount);
-                }*/
+                    //coinsMap.remove(10);
+                    coinsMap.put(10, coinCount);
+                }
+                coinCountD++;
                 break;
             case 25:
-                /*if(coinCountQ == 0){
-                    coins.put("quarter", 1);
+                if (coinCountQ == 0) {
+                    coinsMap.put(25, 1);
                 } else {
-                    coinCount = coins.get("quarter");
+
+                    coinCount = coinsMap.get(25);
                     coinCount++;
-                    coins.put("quarter", coinCount);
-                }*/
+                    //coinsMap.remove(25);
+                    coinsMap.put(25, coinCount);
+                }
+                coinCountQ++;
                 break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
@@ -86,14 +95,18 @@ public class PayStationImpl implements PayStation {
 
     @Override
     public Map<Integer, Integer> cancel() {
-        Map<Integer, Integer> mapTest = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> mapTest = new HashMap<>(coinsMap);
         reset();
         return mapTest;
     }
 
     private void reset() {
         timeBought = insertedSoFar = 0;
-        //should be an existing map called "coins"
+        //should be an existing map called "coinsMap"
+        coinsMap.clear(); //clear the map
+        coinCountN = 0;
+        coinCountD = 0;
+        coinCountQ = 0;
     }
 
     @Override

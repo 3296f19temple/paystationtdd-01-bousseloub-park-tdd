@@ -144,9 +144,10 @@ public class PayStationImplTest {
     /**
      * Test 1 Call to empty returns the total amount entered.
      *
-     * @throws IllegalCoinException
+     * @throws paystation.domain.IllegalCoinException
      */
-    //TODO: fail state
+    //fail state confirmed
+    //Now works
     @Test
     public void callToEmptyReturnsTotal()
             throws IllegalCoinException {
@@ -156,8 +157,11 @@ public class PayStationImplTest {
 
     /**
      * Test 2 Canceled entry does not add to the amount returned by empty.
+     *
+     * @throws paystation.domain.IllegalCoinException
      */
-    //TODO: fail state
+    //fail state confirmed
+    //now Works
     @Test
     public void cancelledDoesNotAddAmountReturnedByEmpty()
             throws IllegalCoinException {
@@ -172,31 +176,36 @@ public class PayStationImplTest {
 
     /**
      * Test 3 Call to empty resets the total to zero.
+     *
+     * @throws paystation.domain.IllegalCoinException
      */
-    //TODO: fail state
+    //fail state confirmed
+    //now Works
     @Test
     public void callToEmptyResetsTotalToZero()
             throws IllegalCoinException {
         ps.addPayment(25);
         ps.addPayment(25);
         ps.empty();
-        assertEquals("Call to empty should reset total to zero", 0, ps.readDisplay());
+        //assertEquals("Call to empty should reset total to zero", 0, ps.readDisplay());
+        assertEquals("Call to empty should reset total to zero", 0, ps.empty());
     }
 
     /**
      * Test 4 Call to cancel returns a map containing one coin entered.
+     *
+     * @throws paystation.domain.IllegalCoinException
      */
-    //TODO: fail state
+    //fail state confirmed
+    //now Works
     @Test
     public void callToCancelReturnsMapContainingOneCoinEntered()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        Map<Integer, Integer> testMap = new HashMap<>();
         ps.addPayment(10);
-        testMap.put("dime", 1);
-        ps.cancel();
-        assertEquals("Should return a map containing one coin entered",
-                10, ps.cancel());
-
+        testMap.put(10, 1);
+        //ps.cancel();
+        assertEquals("Should return a map containing one coin entered", testMap, ps.cancel());
     }
 
     /**
@@ -205,12 +214,13 @@ public class PayStationImplTest {
      * 2x10c and 1x5c, not 1x25c)
      */ // SHOULD WORK? NEEDS TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldReturnSameChange()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
-        testMap.put("dime", 2);
-        testMap.put("nickel", 1);
+        Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
+        testMap.put(10, 2);
+        testMap.put(5, 1);
         ps.addPayment(10);
         ps.addPayment(10);
         ps.addPayment(5);
@@ -222,12 +232,14 @@ public class PayStationImplTest {
      * Test 6 Call to cancel returns a map that does not contain a key for a
      * coin not entered
      */ //UPDATE ASSERTEQUALS TO WORK
+    //failed test confirmed
+    //now Works
     @Test
     public void shouldHaveAccurateCoinMap()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
-        testMap.put("dime", 1);
-        testMap.put("nickel", 1);
+        Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
+        testMap.put(10, 1);
+        testMap.put(5, 1);
         ps.addPayment(5);
         ps.addPayment(10);
         //no ps.addPayments(25) so there should be no map for quarters
@@ -239,10 +251,11 @@ public class PayStationImplTest {
      * Test 7 Call to cancel clears the map
      */ //SHOULD WORK? NEED TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldClearMapAfterCancel()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
         ps.addPayment(5);
         ps.addPayment(10);
         ps.addPayment(25);
@@ -256,10 +269,11 @@ public class PayStationImplTest {
      * Test 8 Call to buy clears the map
      */ //SHOULD WORK? NEED TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldClearMapAfterBuy()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
         ps.addPayment(5);
         ps.addPayment(10);
         ps.addPayment(25);
