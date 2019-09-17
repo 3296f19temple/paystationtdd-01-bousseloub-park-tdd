@@ -214,8 +214,8 @@ public class PayStationImplTest {
     public void shouldReturnSameChange()
             throws IllegalCoinException {
         Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
-        testMap.put("dime", 2);
-        testMap.put("nickel", 1);
+        testMap.put(10, 2);
+        testMap.put(5, 1);
         ps.addPayment(10);
         ps.addPayment(10);
         ps.addPayment(5);
@@ -232,8 +232,8 @@ public class PayStationImplTest {
     public void shouldHaveAccurateCoinMap()
             throws IllegalCoinException {
         Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
-        testMap.put("dime", 1);
-        testMap.put("nickel", 1);
+        testMap.put(10, 1);
+        testMap.put(5, 1);
         ps.addPayment(5);
         ps.addPayment(10);
         //no ps.addPayments(25) so there should be no map for quarters
