@@ -44,8 +44,10 @@ public class PayStationImpl implements PayStation {
 
                     coinCount = coinsMap.get(5);
                     coinCount++;
+                    //coinsMap.remove(5);
                     coinsMap.put(5, coinCount);
                 }
+                coinCountN++;
                 break;
             case 10:
                 if (coinCountD == 0) {
@@ -54,8 +56,10 @@ public class PayStationImpl implements PayStation {
 
                     coinCount = coinsMap.get(10);
                     coinCount++;
+                    //coinsMap.remove(10);
                     coinsMap.put(10, coinCount);
                 }
+                coinCountD++;
                 break;
             case 25:
                 if (coinCountQ == 0) {
@@ -64,8 +68,10 @@ public class PayStationImpl implements PayStation {
 
                     coinCount = coinsMap.get(25);
                     coinCount++;
+                    //coinsMap.remove(25);
                     coinsMap.put(25, coinCount);
                 }
+                coinCountQ++;
                 break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
@@ -98,7 +104,9 @@ public class PayStationImpl implements PayStation {
         timeBought = insertedSoFar = 0;
         //should be an existing map called "coinsMap"
         coinsMap.clear(); //clear the map
-
+        coinCountN = 0;
+        coinCountD = 0;
+        coinCountQ = 0;
     }
 
     @Override
