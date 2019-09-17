@@ -147,6 +147,7 @@ public class PayStationImplTest {
      * @throws paystation.domain.IllegalCoinException
      */
     //fail state confirmed
+    //Now works
     @Test
     public void callToEmptyReturnsTotal()
             throws IllegalCoinException {
@@ -160,6 +161,7 @@ public class PayStationImplTest {
      * @throws paystation.domain.IllegalCoinException
      */
     //fail state confirmed
+    //now Works
     @Test
     public void cancelledDoesNotAddAmountReturnedByEmpty()
             throws IllegalCoinException {
@@ -178,6 +180,7 @@ public class PayStationImplTest {
      * @throws paystation.domain.IllegalCoinException
      */
     //fail state confirmed
+    //now Works
     @Test
     public void callToEmptyResetsTotalToZero()
             throws IllegalCoinException {
@@ -193,6 +196,7 @@ public class PayStationImplTest {
      * @throws paystation.domain.IllegalCoinException
      */
     //fail state confirmed
+    //now Works
     @Test
     public void callToCancelReturnsMapContainingOneCoinEntered()
             throws IllegalCoinException {
@@ -210,6 +214,7 @@ public class PayStationImplTest {
      * 2x10c and 1x5c, not 1x25c)
      */ // SHOULD WORK? NEEDS TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldReturnSameChange()
             throws IllegalCoinException {
@@ -228,6 +233,7 @@ public class PayStationImplTest {
      * coin not entered
      */ //UPDATE ASSERTEQUALS TO WORK
     //failed test confirmed
+    //now Works
     @Test
     public void shouldHaveAccurateCoinMap()
             throws IllegalCoinException {
@@ -245,6 +251,7 @@ public class PayStationImplTest {
      * Test 7 Call to cancel clears the map
      */ //SHOULD WORK? NEED TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldClearMapAfterCancel()
             throws IllegalCoinException {
@@ -262,6 +269,7 @@ public class PayStationImplTest {
      * Test 8 Call to buy clears the map
      */ //SHOULD WORK? NEED TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldClearMapAfterBuy()
             throws IllegalCoinException {
