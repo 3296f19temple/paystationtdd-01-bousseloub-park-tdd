@@ -27,4 +27,8 @@ Maamar Bousseloub
 * Contributions: ...
 
 Christopher Park
-* Contributions: ...
+* Contributions: 
+  * - Created tests 5-8
+  * - Ran later stages of TDD cycles for tests
+  * - Created contents of switch statements under addPayment()
+  * - Added coinCount variable reset to reset()
