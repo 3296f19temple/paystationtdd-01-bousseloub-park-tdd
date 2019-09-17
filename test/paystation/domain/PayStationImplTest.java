@@ -213,7 +213,7 @@ public class PayStationImplTest {
     @Test
     public void shouldReturnSameChange()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
         testMap.put("dime", 2);
         testMap.put("nickel", 1);
         ps.addPayment(10);
@@ -231,7 +231,7 @@ public class PayStationImplTest {
     @Test
     public void shouldHaveAccurateCoinMap()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
         testMap.put("dime", 1);
         testMap.put("nickel", 1);
         ps.addPayment(5);
@@ -248,7 +248,7 @@ public class PayStationImplTest {
     @Test
     public void shouldClearMapAfterCancel()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
         ps.addPayment(5);
         ps.addPayment(10);
         ps.addPayment(25);
@@ -265,7 +265,7 @@ public class PayStationImplTest {
     @Test
     public void shouldClearMapAfterBuy()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        Map<Integer, Integer> testMap = new HashMap<Integer, Integer>();
         ps.addPayment(5);
         ps.addPayment(10);
         ps.addPayment(25);
