@@ -24,7 +24,11 @@ and apply the following test cases:
 Team Members: 
 
 Maamar Bousseloub
-* Contributions: ...
+* Contributions:
+  * - Created tests 1-4
+  * - Created int empty()
+  * - Helped with code for cancel() to return a map
+  * - prepared README file
 
 Christopher Park
 * Contributions: 
