@@ -214,6 +214,7 @@ public class PayStationImplTest {
      * 2x10c and 1x5c, not 1x25c)
      */ // SHOULD WORK? NEEDS TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldReturnSameChange()
             throws IllegalCoinException {
