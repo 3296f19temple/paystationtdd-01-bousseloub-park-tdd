@@ -38,34 +38,34 @@ public class PayStationImpl implements PayStation {
         switch (coinValue) {
 
             case 5:
-                if (coinCountN == 0) {
+                /*if (coinCountN == 0) {
                     coinsMap.put(5, 1);
                 } else {
 
                     coinCount = coinsMap.get(5);
                     coinCount++;
                     coinsMap.put(5, coinCount);
-                }
+                }*/
                 break;
             case 10:
-                if (coinCountD == 0) {
+                /*if (coinCountD == 0) {
                     coinsMap.put(10, 1);
                 } else {
 
                     coinCount = coinsMap.get(10);
                     coinCount++;
                     coinsMap.put(10, coinCount);
-                }
+                }*/
                 break;
             case 25:
-                if (coinCountQ == 0) {
+                /*if (coinCountQ == 0) {
                     coinsMap.put(25, 1);
                 } else {
 
                     coinCount = coinsMap.get(25);
                     coinCount++;
                     coinsMap.put(25, coinCount);
-                }
+                }*/
                 break;
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
