@@ -71,7 +71,7 @@ public class PayStationImpl implements PayStation {
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
 
-        //insertedSoFar += coinValue;
+        insertedSoFar += coinValue;
         timeBought = insertedSoFar / 5 * 2;
     }
 
