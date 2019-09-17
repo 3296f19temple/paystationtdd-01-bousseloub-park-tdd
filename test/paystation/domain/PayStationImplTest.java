@@ -147,6 +147,7 @@ public class PayStationImplTest {
      * @throws paystation.domain.IllegalCoinException
      */
     //fail state confirmed
+    //Now works
     @Test
     public void callToEmptyReturnsTotal()
             throws IllegalCoinException {
@@ -245,6 +246,7 @@ public class PayStationImplTest {
      * Test 7 Call to cancel clears the map
      */ //SHOULD WORK? NEED TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldClearMapAfterCancel()
             throws IllegalCoinException {
@@ -262,6 +264,7 @@ public class PayStationImplTest {
      * Test 8 Call to buy clears the map
      */ //SHOULD WORK? NEED TEST
     //failed test confirmed
+    //now Works
     @Test
     public void shouldClearMapAfterBuy()
             throws IllegalCoinException {

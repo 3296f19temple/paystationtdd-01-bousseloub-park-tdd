@@ -104,7 +104,7 @@ public class PayStationImpl implements PayStation {
     @Override
     public int empty() {
         int totalAmountCollected = insertedSoFar;
-        //reset();
+        reset();
         return totalAmountCollected;
     }
 }
