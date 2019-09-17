@@ -144,7 +144,7 @@ public class PayStationImplTest {
     /**
      * Test 1 Call to empty returns the total amount entered.
      *
-     * @throws IllegalCoinException
+     * @throws paystation.domain.IllegalCoinException
      */
     //TODO: fail state
     @Test
@@ -156,6 +156,8 @@ public class PayStationImplTest {
 
     /**
      * Test 2 Canceled entry does not add to the amount returned by empty.
+     *
+     * @throws paystation.domain.IllegalCoinException
      */
     //TODO: fail state
     @Test
@@ -172,6 +174,8 @@ public class PayStationImplTest {
 
     /**
      * Test 3 Call to empty resets the total to zero.
+     *
+     * @throws paystation.domain.IllegalCoinException
      */
     //TODO: fail state
     @Test
@@ -185,17 +189,18 @@ public class PayStationImplTest {
 
     /**
      * Test 4 Call to cancel returns a map containing one coin entered.
+     *
+     * @throws paystation.domain.IllegalCoinException
      */
     //TODO: fail state
     @Test
     public void callToCancelReturnsMapContainingOneCoinEntered()
             throws IllegalCoinException {
-        Map<String, Integer> testMap = new HashMap<String, Integer>();
+        Map<Integer, Integer> testMap = new HashMap<>();
         ps.addPayment(10);
-        testMap.put("dime", 1);
-        ps.cancel();
-        assertEquals("Should return a map containing one coin entered",
-                10, ps.cancel());
+        testMap.put(10, 1);
+        //ps.cancel();
+        assertEquals("Should return a map containing one coin entered", testMap, ps.cancel());
 
     }
 
@@ -217,7 +222,6 @@ public class PayStationImplTest {
         assertEquals("cancel should return same coins as entered",
                 testMap, ps.cancel());
     }
-
 
     /**
      * Test 6 Call to cancel returns a map that does not contain a key for a
